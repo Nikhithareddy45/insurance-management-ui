@@ -1,0 +1,35 @@
+/* Container for the card */
+.container {
+    width: 100%;
+    max-width: 400px; /* Maximum width for the card */
+    padding: 20px;
+}
+
+/* Card styles */
+.card {
+    background-color: #ffffff; /* White background for the card */
+    padding: 20px;
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Soft shadow */
+}
+
+/* Card title */
+.card-title {
+    font-size: 24px; /* Title font size */
+    font-weight: bold; /* Bold title */
+    margin-bottom: 15px; /* Spacing below the title */
+    text-align: center; /* Center align the title */
+    color: #007bff; /* Title color */
+}
+
+/* Card paragraph styles */
+.card p {
+    font-size: 16px; /* Font size for details */
+    margin: 5px 0; /* Spacing between paragraphs */
+    color: #333; /* Text color */
+}
+
+/* Strong element styles */
+.card strong {
+    color: #007bff; /* Color for strong elements */
+}

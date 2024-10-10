@@ -1,0 +1,103 @@
+/* Reset default margin and padding */
+/* Form Container */
+.container {
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+}
+
+/* Form Box */
+.form-box {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 10px;
+  /* Rounded corners */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  /* Subtle shadow */
+}
+
+/* Form Title */
+.form-title {
+  font-size: 28px;
+  /* Larger title */
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #007bff;
+  /* Blue title color */
+}
+
+/* Form Group */
+.form-group {
+  margin-bottom: 20px;
+  /* Increased spacing between fields */
+}
+
+label {
+  font-size: 16px;
+  /* Larger label font */
+  font-weight: 500;
+  margin-bottom: 5px;
+  display: block;
+  color: #333333;
+}
+
+/* Input Fields */
+.form-input {
+  width: 100%;
+  padding: 12px;
+  /* Increased padding */
+  border: 2px solid #ccc;
+  /* Thicker border */
+  border-radius: 6px;
+  font-size: 14px;
+  transition: border-color 0.3s;
+  /* Smooth transition */
+}
+
+.form-input:focus {
+  border-color: #007bff;
+  /* Blue focus border */
+  outline: none;
+  /* Remove default outline */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  /* Soft blue glow */
+}
+
+/* Submit Button */
+.submit-button {
+  width: 100%;
+  padding: 14px;
+  /* Increased button padding */
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 18px;
+  /* Larger button font */
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  /* Added transform */
+}
+
+.submit-button:hover {
+  background-color: #0056b3;
+  /* Darker blue on hover */
+  transform: scale(1.05);
+  /* Slightly enlarge on hover */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 480px) {
+  .form-title {
+    font-size: 24px;
+    /* Smaller title on smaller screens */
+  }
+
+  .form-input,
+  .submit-button {
+    font-size: 16px;
+    /* Adjust font size for mobile */
+  }
+}

@@ -1,24 +1,37 @@
-import logo from './logo.svg';
+import { lazy, Suspense } from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import CustomerList from './post-login/customers/list/CustomerList';
+import Policy from './post-login/customers/policy/Policy';
+import PolicyList from './post-login/customers/policy-list/PolicyList';
+
+const Login = lazy(() => import('./pre-login/login/Login'));
+const Register = lazy(() => import('./pre-login/registration/Register'));
+const NotFound  = lazy(() => import('./pre-login/not-found/NotFound'));
+const AuthRoute = lazy(() => import('./post-login/AuthRoute'));
+const Customer = lazy(() => import('./post-login/customers/create/Customer'));
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <BrowserRouter>
+      <Suspense fallback={<h1>Loading ....</h1>}>
+        <Routes>
+          <Route path='' element={<Login />} />
+          <Route path='login' element={<Login />} />
+          <Route path='register' element={<Register />} />
+          <Route path='*' element={<NotFound />} />
+          <Route path='auth' element={<AuthRoute />}>
+            <Route path='create' element={<Customer />} />
+            <Route path='list' element={<CustomerList />}/>
+            <Route path='policy' element={<Policy />}/>
+            <Route path='policies' element={<PolicyList />}/>
+          </Route>
+        </Routes>
+      </Suspense>
+    </BrowserRouter>
+    </>
   );
 }
 

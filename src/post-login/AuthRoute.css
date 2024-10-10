@@ -1,0 +1,41 @@
+.header {
+    background-color: #004db2; /* Updated header color */
+    padding: 10px 0;
+    padding-bottom: 20px;
+    margin-bottom: 25px;
+  }
+  
+  .header-container {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logo img {
+    height: 18px;
+  }
+  
+  .nav-links {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .nav-link {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .icon-links {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .icon {
+    width: 20px;
+    height: 20px;
+    filter: brightness(0) invert(1); /* Ensure the icons appear white */
+  }
