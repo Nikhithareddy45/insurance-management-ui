@@ -103,7 +103,7 @@ function Login() {
             <button type="submit" disabled={registerStatus.isLoading}>{registerStatus.isLoading ? 'Loading ...' : 'Login'}</button>
           </form>
           <div className='d-flex justify-content-end'>
-            <Link to={'register'}>Register</Link>
+            <Link to={'/register'}>Register</Link>
           </div>
         </div>
       </div>
