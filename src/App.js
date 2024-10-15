@@ -24,9 +24,10 @@ function App() {
           <Route path='*' element={<NotFound />} />
           <Route path='auth' element={<AuthRoute />}>
             <Route path='create' element={<Customer />} />
+            <Route path='create/:id' element={<Customer />} />
             <Route path='list' element={<CustomerList />}/>
-            <Route path='policy' element={<Policy />}/>
-            <Route path='policies' element={<PolicyList />}/>
+            <Route path='policy/:customerId' element={<Policy />}/>
+            <Route path='policies/:customerId' element={<PolicyList />}/>
           </Route>
         </Routes>
       </Suspense>

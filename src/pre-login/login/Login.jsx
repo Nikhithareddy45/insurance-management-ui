@@ -38,7 +38,8 @@ function Login() {
           successMessage: 'Login Success'
         });
         reset();
-        navigate('auth/list');
+        localStorage.setItem('USER_ID', response.data?.id);
+        navigate('/auth/list');
       } else {
         setRegisterStatus({
           isLoading: false,
