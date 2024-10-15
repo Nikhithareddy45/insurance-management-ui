@@ -4,6 +4,12 @@ import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import { API_URL } from '../../appconfig';
 import './Login.css';
+
+import user_icon from './Images/person.png'
+import email_icon from './Images/email.png'
+import password_icon from './Images/password.png'
+import massmutual_img from './Images/massm.svg'
+import signin_pic2 from './Images/signin-image.jpg'
 function Login() {
 
   const navigate = useNavigate();
@@ -65,51 +71,51 @@ function Login() {
   }
   return (
     <>
-      <div id="background-image">
-        {/* <div id="container">
-          <img src="C:/Users/91944/OneDrive/Documents/neeharhtml/MM_FullMark_White.svg"
-            alt="Mass Mutual Logo" id="logo" />
-            <div id="login-text"><b>Log in to Dashboard</b></div>
-        </div> */}
-      </div>
-      <div id="c1">
-        <div className="login-container">
-          <h2>Login</h2>
-          {(registerStatus.errorMessage || registerStatus.successMessage) && <div className={`alert ${registerStatus.errorMessage ? 'alert-danger' : 'alert-success'} alert-dismissible fade show`} role="alert">
-            {registerStatus.errorMessage}
-            {registerStatus.successMessage}
-          </div>}
-          <form onSubmit={handleSubmit(loginSubmitHandler)}>
-            <div>
-              <label ><b>Email:</b></label>
-              <input type="email" id="email" name="email" placeholder="Enter your email"
-                {
+      <form onSubmit={handleSubmit(loginSubmitHandler)}>
+        <div className='main'>
+          <div className='images'>
+            <div className='img-1'><img src={massmutual_img} alt="" /> </div>
+            <div className='img-3'> <img src={signin_pic2} alt="" /> </div>
+          </div>
+          <div className='container'>
+            <div className="header">
+              <div className="text">Login</div>
+              <div className="underline"></div>
+            </div>
+            <div className="inputs">
+
+              <div className="input">
+                <img src={email_icon} alt="" />
+                <input type="email" placeholder='Email Id' {
                 ...register('email', {
                   required: "Email is required"
                 })
-                } />
-              <p className='text-danger m-0'>{errors.email && errors.email.message}</p>
-            </div>
-            <div style={{ paddingTop: '10px' }}></div>
-            <div>
-              <label ><strong>Password:</strong></label>
-              <input type="password" id="password" name="password" placeholder="Enter your password" {
+                }/>
+                <p className='text-danger m-0'>{errors.email && errors.email.message}</p>
+              </div>
+              <div className="input">
+                <img src={password_icon} alt="" />
+                <input type="password" placeholder='Password' {
                 ...register('password', {
                   required: "Password is required"
                 })
               } />
-              <p className='text-danger m-0'>{errors.password && errors.password.message}</p>
+              </div>
             </div>
-            <div style={{ paddingTop: "15px" }}></div>
-            <button type="submit" disabled={registerStatus.isLoading}>{registerStatus.isLoading ? 'Loading ...' : 'Login'}</button>
-          </form>
-          <div className='d-flex justify-content-end'>
-            <Link to={'/register'}>Register</Link>
+            <div className="forgot-password">Signup ? <span><Link to={'/register'}>Click Here!</Link></span></div>
+
+            <div className="submit-container">
+              <div className="submit"><button type="submit" style={{background: 'transparent', color: 'white'}} disabled={registerStatus.isLoading}>{registerStatus.isLoading ? 'Loading ...' : 'Login'}</button></div>
+            </div>
+            {(registerStatus.errorMessage || registerStatus.successMessage) && <div className={`alert ${registerStatus.errorMessage ? 'alert-danger' : 'alert-success'} alert-dismissible fade show`} role="alert">
+              {registerStatus.errorMessage}
+              {registerStatus.successMessage}
+            </div>}
           </div>
         </div>
-      </div>
+      </form>
     </>
-  )
+  );
 }
 
 export default Login

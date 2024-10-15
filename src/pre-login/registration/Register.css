@@ -1,5 +1,5 @@
 #background-image {
-    background-image: url('/public/Images/balloons.jpeg');
+    /* background-image: url('/public/Images/balloons.jpeg'); */
     background-size: cover;      
     background-position: center; 
     height: 50vh;  
