@@ -5,6 +5,21 @@ import { Link, useParams } from 'react-router-dom';
 import { API_URL } from '../../../appconfig';
 import './Policy.css';
 
+export const POLICY_TYPES = [
+    {
+        key: 'Education',
+        label: 'Education'
+    },
+    {
+        key: 'Recurring',
+        label: 'Recurring'
+    },
+    {
+        key: 'Mid Returns',
+        label: 'Mid Returns'
+    }
+];
+
 const addYearsToDate = (yearsToAdd) => {
     let currentDate = new Date(); // Get the current date
     currentDate.setFullYear(currentDate.getFullYear() + (+yearsToAdd)); // Add years
@@ -80,42 +95,25 @@ function Policy() {
                 {(registerStatus.errorMessage || registerStatus.successMessage) && <div className={`alert ${registerStatus.errorMessage ? 'alert-danger' : 'alert-success'} alert-dismissible fade show`} role="alert">
                     {registerStatus.errorMessage}
                     {registerStatus.successMessage && <div>
-                        <span>{registerStatus.successMessage}</span>
-                        <Link to={`/auth/policies/${params.customerId}`}>Create policy for this user</Link>
+                        <span>{registerStatus.successMessage}</span> &nbsp;
+                        <Link to={`/auth/policies/${params.customerId}`}>List of Policies</Link>
                     </div>}
                 </div>}
                 <form onSubmit={handleSubmit(registerSubmitHandler)}>
                     <div className="form-group">
-                        <label for="policy-name">Policy Name:</label>
-                        <input type="text" id="policy-name" className="form-input"
-                            {
+                        <label for="policy-name">Policy:</label>
+                        <select id="policy-name" className="form-input" {
                             ...register('policyName', {
-                                required: "First name is required"
+                                required: 'Policy name is required'
                             })
-                            } />
+                        }>
+                            <option value="">Select Policy</option>
+                            {POLICY_TYPES.map((item) => {
+                                return <option value={item.key} key={item.key}>{item.label}</option>
+                            })}
+                        </select>
                         <p className='text-danger m-0'>{errors.policyName && errors.policyName.message}</p>
                     </div>
-
-                    {/* <div className="form-group">
-                        <label for="policy-start-date">Policy Start Date:</label>
-                        <input type="date" id="policy-start-date" className="form-input"
-                            {
-                            ...register('policyStartDate', {
-                                required: "Policy End Date is required"
-                            })
-                            }/>
-                        <p className='text-danger m-0'>{errors.policyStartDate && errors.policyStartDate.message}</p>
-                    </div> */}
-
-                    {/* <div className="form-group">
-                        <label for="policy-end-date">Policy End Date:</label>
-                        <input type="date" id="policy-end-date" className="form-input" {
-                            ...register('policyEndDate', {
-                                required: "Policy end date is required"
-                            })
-                        } />
-                        <p className='text-danger m-0'>{errors.policyEndDate && errors.policyEndDate.message}</p>
-                    </div> */}
 
                     <div className="form-group">
                         <label for="policy-tenure">Policy Tenure (in years):</label>

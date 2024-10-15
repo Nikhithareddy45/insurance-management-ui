@@ -14,7 +14,7 @@ const Navbar = () => {
                     <div className="nav-item">
                         <NavLink className={({ isActive }) =>
                             isActive ? 'nav-link active text-muted' : 'nav-link'
-                        } to={'/dashboard'}><i className="fa fa-bar-chart" aria-hidden="true"></i>&nbsp; Dashboard</NavLink>
+                        } to={'/auth/dashboard'}><i className="fa fa-bar-chart" aria-hidden="true"></i>&nbsp; Dashboard</NavLink>
                     </div>
                     <div className="nav-item">
                         <NavLink className={({ isActive }) =>

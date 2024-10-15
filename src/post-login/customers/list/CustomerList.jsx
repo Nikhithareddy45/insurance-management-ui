@@ -3,13 +3,17 @@ import React, { useEffect } from 'react'
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { API_URL } from '../../../appconfig';
+import { POLICY_TYPES } from '../policy/Policy';
 import './CustomerList.css';
 
 function CustomerList() {
     const [customerList, setCustomerList] = useState([]);
     const [initialList, setInitialList] = useState([]);
 
+    const [policyList, setPolicyList] = useState([]);
+
     const [searchTerm, setSearchTerm] = useState('');
+    const [policyType, setPolicyType] = useState('');
 
 
     const [deleteMessage, setDeleteMessage] = useState({
@@ -18,16 +22,39 @@ function CustomerList() {
     });
 
     useEffect(() => {
-        const filtered = initialList.filter((customer) =>
-            `${customer.firstName} ${customer.lastName}`.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            customer.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            customer.phoneNumber.includes(searchTerm)
-        );
-        setCustomerList(filtered);
-    }, [searchTerm]);
+        if (searchTerm || policyType) {
+            const filtered = initialList.filter((customer) => {
+                // Combine first name and last name for search
+                const fullName = `${customer.firstName} ${customer.lastName}`.toLowerCase();
+
+                // Check if the customer matches the search term
+                const matchesSearch =
+                    !searchTerm || fullName.includes(searchTerm.toLowerCase()) ||
+                    customer.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                    customer.phoneNumber.includes(searchTerm);
+
+
+                // Check if the customer has the selected policy type (if provided)
+                const matchesPolicyType =
+                    !policyType ||  // If no policyType is selected, allow all customers
+                    policyList.some(policy =>
+                        policy.customerID === customer.id &&
+                        policy.policyName.toLowerCase() === policyType.toLowerCase()
+                    );
+
+                // Return true only if both conditions are met
+                return matchesSearch && matchesPolicyType;
+            });
+            setCustomerList(filtered);
+        } else {
+            setCustomerList(initialList);
+        }
+
+    }, [searchTerm, policyType, initialList, policyList]);
 
     useEffect(() => {
         fetchData();
+        fetchPolices();
     }, []);
 
     const fetchData = async () => {
@@ -36,6 +63,14 @@ function CustomerList() {
         if (response.data) {
             setCustomerList(response.data);
             setInitialList(response.data);
+        }
+    }
+
+    const fetchPolices = async () => {
+        const agentID = localStorage.getItem('USER_ID');
+        const response = await axios.get(`${API_URL}/policy/${agentID}`);
+        if (response.data) {
+            setPolicyList(response.data);
         }
     }
 
@@ -79,8 +114,20 @@ function CustomerList() {
                             value={searchTerm}
                             onChange={(event) => setSearchTerm(event.target.value)} />
                     </div>
-                    <div>
-                        <Link className='btn btn-primary' to={'/auth/create'}>New Customer</Link>
+
+                    <div className='d-flex'>
+                        <div>
+                            <select id="policy-name" className="form-input" value={policyType}
+                                onChange={(event) => setPolicyType(event.target.value)}>
+                                <option value="">Select Policy</option>
+                                {POLICY_TYPES.map((item) => {
+                                    return <option value={item.key} key={item.key}>{item.label}</option>
+                                })}
+                            </select>
+                        </div>&nbsp;
+                        <div>
+                            <Link className='btn btn-primary' to={'/auth/create'}>New Customer</Link>
+                        </div>
                     </div>
                 </div>
                 {customerList?.length ? <>
