@@ -7,16 +7,16 @@ import './Policy.css';
 
 export const POLICY_TYPES = [
     {
-        key: 'Education',
-        label: 'Education'
+        key: 'Health',
+        label: 'Health'
     },
     {
-        key: 'Recurring',
-        label: 'Recurring'
+        key: 'Life',
+        label: 'Life'
     },
     {
-        key: 'Mid Returns',
-        label: 'Mid Returns'
+        key: 'Car',
+        label: 'Car'
     }
 ];
 
