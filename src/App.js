@@ -12,14 +12,16 @@ const NotFound = lazy(() => import('./pre-login/not-found/NotFound'));
 const AuthRoute = lazy(() => import('./post-login/AuthRoute'));
 const Customer = lazy(() => import('./post-login/customers/create/Customer'));
 const Dashboard = lazy(() => import('./post-login/dashboard/Dashboard'));
-
+const HomeDashboard = lazy(() => import('./pre-login/home/HomeDashboard'));
 function App() {
   return (
     <>
       <BrowserRouter>
         <Suspense fallback={<h1>Loading ....</h1>}>
           <Routes>
-            <Route path='' element={<Login />} />
+
+          <Route path='' element={<HomeDashboard />} />
+            <Route path='home' element={<HomeDashboard />}/>
             <Route path='login' element={<Login />} />
             <Route path='register' element={<Register />} />
             <Route path='*' element={<NotFound />} />

@@ -5,7 +5,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { API_URL } from '../../appconfig';
 import './Login.css';
 
-import user_icon from './Images/person.png'
 import email_icon from './Images/email.png'
 import password_icon from './Images/password.png'
 import massmutual_img from './Images/massm.svg'
@@ -100,9 +99,11 @@ function Login() {
                   required: "Password is required"
                 })
               } />
+              <p className='text-danger m-0'>{errors.password && errors.password.message}</p>
               </div>
             </div>
             <div className="forgot-password">Signup ? <span><Link to={'/register'}>Click Here!</Link></span></div>
+            <div className="forgot-password">Home ? <span><Link to={'/home'}>Click Here!</Link></span></div>
 
             <div className="submit-container">
               <div className="submit"><button type="submit" style={{background: 'transparent', color: 'white'}} disabled={registerStatus.isLoading}>{registerStatus.isLoading ? 'Loading ...' : 'Login'}</button></div>

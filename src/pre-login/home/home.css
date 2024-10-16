@@ -1,0 +1,29 @@
+.flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:25px;
+}
+.navbar{
+    background-color:#002452 ;
+    padding-left: 40px;
+}
+.navbar img{
+    width: 10rem;
+}
+.navbar-nav{
+    justify-content: center;
+}
+.main{
+  width: 85%;
+  margin: auto;
+}
+.main img{
+  border-radius: 15px;
+}
+#customer-btn{
+    background-color: #1061cb;
+}
+.footer-bg{
+    background-color: rgb(5, 5, 131);
+}
