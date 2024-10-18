@@ -50,7 +50,7 @@ function Register() {
         setRegisterStatus({
           isLoading: false,
           errorMessage: '',
-          successMessage: 'User Registered Successfull'
+          successMessage: 'User Registered Successfull. Admin should approve you to make your account active.'
         });
         reset();
       } else {

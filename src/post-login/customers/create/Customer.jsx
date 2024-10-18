@@ -33,7 +33,6 @@ function Customer() {
   });
   
   useEffect(() => {
-    console.log(params);
     if (params.id) {
       getAllUserDetails();
     }

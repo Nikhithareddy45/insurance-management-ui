@@ -37,14 +37,24 @@ function Login() {
     try {
       const response = await axios.post(`${API_URL}/users/login`, data);
       if (response.data?.id) {
-        setRegisterStatus({
-          isLoading: false,
-          errorMessage: '',
-          successMessage: 'Login Success'
-        });
-        reset();
-        localStorage.setItem('USER_ID', response.data?.id);
-        navigate('/auth/list');
+        
+        if (response.data?.status) {
+          setRegisterStatus({
+            isLoading: false,
+            errorMessage: '',
+            successMessage: 'Login Success'
+          });
+          reset();
+          localStorage.setItem('USER_ID', response.data?.id);
+          navigate('/auth/list');
+        } else {
+          setRegisterStatus({
+            isLoading: false,
+            errorMessage: 'Your account is not yet active. Please contact Admin.',
+            successMessage: ''
+          });
+        }
+       
       } else {
         setRegisterStatus({
           isLoading: false,
