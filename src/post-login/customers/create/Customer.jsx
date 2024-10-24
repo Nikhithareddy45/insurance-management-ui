@@ -181,6 +181,7 @@ function Customer() {
               })
               }
             />
+            <p className='text-danger m-0'>{errors.email && errors.email.message}</p>
           </div>
 
           <div className="form-group">
@@ -196,7 +197,7 @@ function Customer() {
 
           <div className="form-group">
             <label for="gender">Gender:</label>
-            <select id="gender" className="form-input" {
+            <select className="form-input" {
               ...register('gender', {
                 required: 'Gender is required'
               })
@@ -217,7 +218,7 @@ function Customer() {
                 required: 'Address is required'
               })
               }></textarea>
-            <p className='text-danger m-0'>{errors.address && errors.address.message}</p>
+            <p className='text-danger m-0 address-error'>{errors.address && errors.address.message}</p>
           </div>
 
           <div className="form-group">

@@ -81,11 +81,13 @@ function Login() {
   return (
     <>
       <form onSubmit={handleSubmit(loginSubmitHandler)}>
-        <div className='main'>
-          <div className='images'>
+       <div className="content">
+       <div className="mm-logo">
             <div className='img-1'><img src={massmutual_img} alt="" /> </div>
-            <div className='img-3'> <img src={signin_pic2} alt="" /> </div>
-          </div>
+
+        </div>
+        <div className='main'>
+          
           <div className='container'>
             <div className="header">
               <div className="text">Login</div>
@@ -122,8 +124,13 @@ function Login() {
               {registerStatus.errorMessage}
               {registerStatus.successMessage}
             </div>}
+            
+          </div>
+          <div className='images'>
+            <div className='img-3'> <img src={signin_pic2} alt="" /> </div>
           </div>
         </div>
+       </div>
       </form>
     </>
   );

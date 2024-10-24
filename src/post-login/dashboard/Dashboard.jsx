@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import axios from 'axios';
 import { API_URL } from '../../appconfig';
+import '../dashboard/dashboard.css';
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 function Dashboard() {
@@ -57,10 +58,15 @@ function Dashboard() {
         },
     };
 
-    return <div className='d-flex'>
+    return <div className='d-flex pie'>
         <h1>Analytics</h1>
-        <div style={{ width: '50%', height: '50%' }}>
-            <div className='d-flex justify-content-center'>
+        <div style={{ width: '50%', 
+        height: '50%', 
+        display: 'flex', 
+        alignItems: 'center', 
+        justifyContent: 'center' 
+}}>
+            <div className='d-flex canvas justify-content-center'>
                 <Pie data={data} options={options} />
             </div>
         </div>

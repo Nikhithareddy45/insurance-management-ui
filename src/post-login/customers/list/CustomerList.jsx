@@ -108,9 +108,9 @@ function CustomerList() {
 
             <div>
                 <h1>Customer List</h1>
-                <div className='d-flex justify-content-between pe-5 ps-5'>
+                <div className='d-flex justify-content-between pe-5 ps-5 search'>
                     <div style={{ width: '50%' }}>
-                        <input type="email" className="form-control" id="exampleFormControlInput1" placeholder="Search with name, email and phone"
+                        <input type="email" className="form-control enlarge" id="exampleFormControlInput1" placeholder="Search with name, email and phone"
                             value={searchTerm}
                             onChange={(event) => setSearchTerm(event.target.value)} />
                     </div>
@@ -126,7 +126,7 @@ function CustomerList() {
                             </select>
                         </div>&nbsp;
                         <div>
-                            <Link className='btn btn-primary' to={'/auth/create'}>New Customer</Link>
+                            <Link className='btn btn-primary enlarge' to={'/auth/create'}>New Customer</Link>
                         </div>
                     </div>
                 </div>
@@ -181,7 +181,7 @@ function CustomerList() {
                         </table>
                     </div>
                 </> : <div className='d-flex justify-content-center pt-5'>
-                    <p className='text-danger'>No Records found</p>
+                    <p className='text-danger no-records'>No Records found</p>
                 </div>}
             </div>
         </>
